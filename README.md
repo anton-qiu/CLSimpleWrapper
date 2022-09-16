@@ -1,10 +1,14 @@
 # CLSimpleWrapper
+
 Author: Anton Qiu
+
 Website: http://www.learnitthehardway.com
+
 License: MIT
 
 Simple C++ Wrapper for Open CL
-I know there is official OpenCL C++ Binding for OpenCL, but this project is not to replace that. 
+
+I know there is official OpenCL C++ Binding for OpenCL, but this project is not a replacement to that.
 
 The goal of this wrapper is to simplify the process of writing OpenCL code in a few simple steps:
 1. Write the OpenCL kernel code.
