@@ -9,6 +9,10 @@
 
 #include "CLSimpleWrapper.h"
 
+// currently simplify platform and device selection using this
+#define PLATFORM_ID 1
+#define DEVICE_ID -1
+
 //#define MATRIX_TYPE_DOUBLE
 
 #ifdef MATRIX_TYPE_DOUBLE
@@ -102,7 +106,7 @@ void parallelOpenCLMatrixMultTrans(MATRIX_TYPE* matrixA, MATRIX_TYPE* matrixBTra
 {
     CLSimpleWrapper cl_wrapper;
 
-    cl_wrapper.initOpenCL(-1, -1, false);   // use first platform and device
+    cl_wrapper.initOpenCL(PLATFORM_ID, DEVICE_ID, false);   // use first platform and device
     //cl_wrapper.createCLCommandQueue();
 #ifdef MATRIX_TYPE_DOUBLE
     cl_wrapper.createCLKernel(ClSrcStrMulMatDoubleTrans, "multiplyMatricesTrans");   // integer matrix multiplication.
@@ -124,7 +128,7 @@ void parallelOpenCLMatrixMult(MATRIX_TYPE* matrixA, MATRIX_TYPE* matrixB, MATRIX
 {
     CLSimpleWrapper cl_wrapper;
 
-    cl_wrapper.initOpenCL(-1, -1, false);   // use first platform and device
+    cl_wrapper.initOpenCL(PLATFORM_ID, DEVICE_ID, false);   // use first platform and device
 #ifdef MATRIX_TYPE_DOUBLE
     cl_wrapper.createCLKernel(ClSrcStrMulMatDouble, "multiplyMatrices");   // integer matrix multiplication.
 #else
