@@ -58,7 +58,7 @@ void CLSimpleWrapper::initOpenCL(int platformId, int deviceId, bool is_list_only
         std::cout << "\t" << i << ". Platform Name : " << GetPlatformName(platformIds[i]) << std::endl;
 
         cl_uint deviceIdCount = 0;
-        error = clGetDeviceIDs(platformIds[0], CL_DEVICE_TYPE_ALL, 0, nullptr,
+        error = clGetDeviceIDs(platformIds[i], CL_DEVICE_TYPE_ALL, 0, nullptr,
             &deviceIdCount);
         if ( deviceIdCount == 0 )
         {
@@ -71,7 +71,7 @@ void CLSimpleWrapper::initOpenCL(int platformId, int deviceId, bool is_list_only
         }
 
         std::vector<cl_device_id> deviceIds(deviceIdCount);
-        error = clGetDeviceIDs(platformIds[0], CL_DEVICE_TYPE_ALL, deviceIdCount,
+        error = clGetDeviceIDs(platformIds[i], CL_DEVICE_TYPE_ALL, deviceIdCount,
             deviceIds.data(), nullptr);
 
         for ( int j = 0; j < deviceIdCount; j++ )
@@ -100,7 +100,7 @@ void CLSimpleWrapper::initOpenCL(int platformId, int deviceId, bool is_list_only
 
     const cl_context_properties contextProperties[] =
     {
-        CL_CONTEXT_PLATFORM, reinterpret_cast<cl_context_properties> (platformIds[0]),
+        CL_CONTEXT_PLATFORM, reinterpret_cast<cl_context_properties> (platformIds[platformId]),
         0, 0
     };
 
